@@ -55,6 +55,26 @@ password:admin
 
 ![flask](README.assets/flask.png)
 
+## FAQ
+
+### ENOSPC: System limit for number of file watchers reached
+
+If you get bellow error when up containers.
+
+```shell
+Error: ENOSPC: System limit for number of file watchers reached, watch '/home/node/app/mock'
+```
+
+You must change system limit to watch files.
+
+```shell
+$ cat /proc/sys/fs/inotify/max_user_watches
+65536
+$ sudo sysctl fs.inotify.max_user_watches=524288
+$ cat /proc/sys/fs/inotify/max_user_watches
+524288
+```
+
 ## Reference
 
 1. <https://github.com/PanJiaChen/vue-element-admin>
