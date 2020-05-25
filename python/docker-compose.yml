@@ -1,0 +1,8 @@
+version: "3.6"
+
+services:
+  flask-profiler:
+    container_name: perf-flask-profiler
+    build: ./flask-profiler
+    ports:
+      - 5000:5000
