@@ -2,14 +2,18 @@ version: "3.6"
 
 services:
   vue-admin:
-    container_name: perf-node-vue-admin
     image: node:10-slim
     user: node
     working_dir: /home/node/app
     environment:
       - NODE_ENV=production
     volumes:
-      - ./vue-element-admin:/home/node/app
+      - ./node/vue-element-admin:/home/node/app
     ports:
-      - 9527:9527
+      - 9501-9550:9527
     command: "npm run dev"
+
+  flask-profiler:
+    build: ./python/flask-profiler
+    ports:
+      - 5001-5050:5000
