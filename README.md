@@ -23,20 +23,34 @@ docker-workload_vue-admin_8    docker-entrypoint.sh npm r ...   Up      0.0.0.0:
 docker-workload_vue-admin_9    docker-entrypoint.sh npm r ...   Up      0.0.0.0:9519->9527/tcp
 ```
 
-
-
 10 containers start up.
-
-
 
 <http://localhost:9522/>
 
-![image-20200526003525013](README.assets/image-20200526003525013.png)
-
-
+![vue](README.assets/vue.png)
 
 ## python
 
+```shell
+$ docker-compose up -d --scale flask-profiler=10 flask-profiler
+$ docker-compose ps
+              Name                             Command               State           Ports
+---------------------------------------------------------------------------------------------------
+docker-workload_flask-profiler_1    python3 app.py                   Up      0.0.0.0:5010->5000/tcp
+docker-workload_flask-profiler_10   python3 app.py                   Up      0.0.0.0:5005->5000/tcp
+docker-workload_flask-profiler_2    python3 app.py                   Up      0.0.0.0:5009->5000/tcp
+docker-workload_flask-profiler_3    python3 app.py                   Up      0.0.0.0:5007->5000/tcp
+docker-workload_flask-profiler_4    python3 app.py                   Up      0.0.0.0:5004->5000/tcp
+docker-workload_flask-profiler_5    python3 app.py                   Up      0.0.0.0:5006->5000/tcp
+docker-workload_flask-profiler_6    python3 app.py                   Up      0.0.0.0:5003->5000/tcp
+docker-workload_flask-profiler_7    python3 app.py                   Up      0.0.0.0:5008->5000/tcp
+docker-workload_flask-profiler_8    python3 app.py                   Up      0.0.0.0:5002->5000/tcp
+docker-workload_flask-profiler_9    python3 app.py                   Up      0.0.0.0:5012->5000/tcp
+```
 
+user:admin
+password:admin
 
 <http://127.0.0.1:5000/flask-profiler/>
+
+![flask](README.assets/flask.png)
