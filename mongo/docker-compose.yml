@@ -1,0 +1,30 @@
+version: "3.6"
+
+services:
+  ycsb:
+    # container_name: perf-mongo-ycsb
+    image: dockbench/ycsb:0.17.0-mongodb
+    environment:
+      MONGO_URL: mongodb://ycsb:ycsb@mongo:27017/ycsb?w=0
+    volumes:
+      - ./.tmp/:/report/
+      - ./ycsb.sh:/docker-entrypoint.sh
+
+  mongo:
+    # container_name: perf-mongo
+    image: mongo
+    environment:
+      MONGO_INITDB_DATABASE: ycsb
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ./db-init.js:/docker-entrypoint-initdb.d/db-init.js
+
+  mongo-express:
+    # container_name: perf-mongo-express
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
